@@ -1,12 +1,14 @@
 import { useConnect } from "wagmi";
 
 const ConnectingWallet = () => {
-  const { connectors } = useConnect();
+  const { connectors, connect } = useConnect();
 
   return (
     <>
       {connectors.map((connector) => (
-        <div key={connector.uid}>{connector.name}</div>
+        <div key={connector.uid} onClick={() => connect({ connector })}>
+          {connector.name}
+        </div>
       ))}
     </>
   );
