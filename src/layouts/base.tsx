@@ -1,5 +1,5 @@
 "use client";
-import { Breadcrumb, Layout, Menu, MenuProps, theme } from "antd";
+import { Breadcrumb, Flex, Layout, Menu, MenuProps, theme } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { ReactNode, createElement } from "react";
@@ -9,6 +9,7 @@ import {
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import Image from "next/image";
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -49,11 +50,10 @@ const BaseLayout = ({ children, ...props }: BaseLayoutProps) => {
     >
       <Header
         style={{
-          display: "flex",
-          alignItems: "center",
           background: themeToken.colorPrimary,
           boxShadow: "0px -2px 4px #472814",
-          padding: 0,
+          paddingLeft: 20,
+          paddingRight: 20,
           borderBottom: `1px solid ${themeToken.colorPrimaryBorder}`,
           WebkitBoxShadow: `0 0 10px ${themeToken.colorPrimaryBorder}`,
           MozBoxShadow: `0 0 10px ${themeToken.colorPrimaryBorder}`,
@@ -61,10 +61,23 @@ const BaseLayout = ({ children, ...props }: BaseLayoutProps) => {
           zIndex: "1",
         }}
       >
-        <div className="demo-logo">We are potato</div>
-        <div>Menu 1</div>
-        <div>Menu 2</div>
-        <div>Menu 3</div>
+        <Flex justify="space-between" align="center">
+          <Flex align="center">
+            <Image
+              src="/potato.png"
+              alt="Potato Finance"
+              width="50"
+              height="50"
+              priority
+            />
+            <div className="demo-logo">We are potato</div>
+          </Flex>
+          <Flex>
+            <div>Menu 1</div>
+            <div>Menu 2</div>
+            <div>Menu 3</div>
+          </Flex>
+        </Flex>
       </Header>
       <Layout>
         <Sider width={200} style={{ background: themeToken.colorBgContainer }}>
@@ -88,7 +101,6 @@ const BaseLayout = ({ children, ...props }: BaseLayoutProps) => {
             margin: 0,
             minHeight: 280,
             background: themeToken.colorBgContainer,
-            // background: "#fabbba",
             borderRadius: themeToken.borderRadiusLG,
           }}
         >
