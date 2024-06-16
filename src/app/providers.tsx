@@ -1,6 +1,8 @@
+import { wagmiConfig } from "@/providers/wagmi/wagmi";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
 import { ReactNode } from "react";
+import { WagmiProvider } from "wagmi";
 
 const mainPotato = "#fabbba";
 
@@ -28,7 +30,7 @@ const AppProviders = ({ children }: { children: ReactNode }) => {
           },
         }}
       >
-        {children}
+        <WagmiProvider config={wagmiConfig}>{children}</WagmiProvider>
       </ConfigProvider>
     </AntdRegistry>
   );
